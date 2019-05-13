@@ -1,0 +1,21 @@
+{
+  "name": "red-bus-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot created with Node.js that inform the available balance of any card",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "telegraf": "^3.28.0",
+    "request": "^2.88.0"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "license": "MIT",
+  "keywords": [
+    "telegram",
+    "bot"
+  ]
+}
