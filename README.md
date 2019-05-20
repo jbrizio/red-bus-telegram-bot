@@ -2,6 +2,7 @@
 Telegram bot created with Node.js that inform the available balance of any card.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2a66e297f722945dc9f6/maintainability)](https://codeclimate.com/github/jbrizio/red-bus-telegram-bot/maintainability)
+<a href="https://david-dm.org/jbrizio/red-bus-telegram-bot"><img src="https://david-dm.org/jbrizio/red-bus-telegram-bot.svg" alt="Dependency Status"></a>
 
 ![Preview](https://s3.amazonaws.com/red-bus-telegram-bot/telegram-bot.png)
 
