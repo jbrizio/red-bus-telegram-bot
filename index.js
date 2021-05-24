@@ -24,27 +24,42 @@ function askForCardNumber(ctx) {
 };
 
 function obtainCaptchaImage(ctx) {
-    ctx.wizard.state.card = ctx.message.text;
-    ctx.reply('Ahora ingrese los carácteres que visualiza aquí debajo 👇');
-    request({
-      url: process.env.CAPTCHA_URL,
-      encoding: null,
-      method: 'GET'
-    }, (error, response, body) => {
+  const options = {
+    url: process.env.CAPTCHA_URL,
+    encoding: null,
+    method: 'GET'
+  };
+
+  function callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+      ctx.reply('Ahora ingrese los carácteres que visualiza aquí debajo 👇');
       ctx.replyWithPhoto({ source: body });
-    });
+    } else {
+      ctx.reply(listOfErrors[500],
+        Markup.inlineKeyboard([
+          Markup.callbackButton('Intentar nuevamente', sceneName)
+        ]).extra()
+      );
+      return ctx.scene.leave();
+    };
+  };
+
+  request(options, callback);
+  ctx.wizard.state.card = ctx.message.text;
   return ctx.wizard.next();
+};
+
+const listOfErrors = {
+  1: 'Captcha incorrecto',
+  2: 'Tarjeta inexistente',
+  3: 'Tarjeta duplicada',
+  98: 'Usuario o IP temporalmente suspendido',
+  99: 'Sesión de usuario inexistente',
+  500: '¡Ups! Al parecer hubo un error'
 };
 
 function obtainBalanceCard(ctx) {
   ctx.wizard.state.captcha = ctx.message.text;
-  const listOfErrors = {
-    1: 'Captcha incorrecto',
-    2: 'Tarjeta inexistente',
-    3: 'Tarjeta duplicada',
-    98: 'Usuario o IP temporalmente suspendido',
-    99: 'Sesión de usuario inexistente'
-  };
 
   const getBalance = util.promisify(request);
   const options = {
