@@ -2,7 +2,6 @@
 Telegram bot created with Node.js that inform the available balance of any card.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/2a66e297f722945dc9f6/maintainability)](https://codeclimate.com/github/jbrizio/red-bus-telegram-bot/maintainability)
-<a href="https://david-dm.org/jbrizio/red-bus-telegram-bot"><img src="https://david-dm.org/jbrizio/red-bus-telegram-bot.svg" alt="Dependency Status"></a>
 
 ![Preview](https://s3.amazonaws.com/red-bus-telegram-bot/telegram-bot.png)
 
@@ -17,7 +16,7 @@ Telegram bot created with Node.js that inform the available balance of any card.
 3.  Go to the folder using `cd ~/red-bus-telegram-bot`
 4.  Run  `npm install`
 5.  Set `process.env.BOT_TOKEN` to the value, you've got from the BotFather
-6.  Run  `npm start` 
+6.  Run  `npm start`
 7.  Find your bot created before on Telegram and press the button `/start` to initialize the wizard
 
 **Note:** The endpoint used to connect with the services of Red Bus, was taken from the [Mobile App](https://github.com/ModernizacionMuniCBA/Cuanto-tengo) "Cuanto Tengo". For security reasons, this was set using environment variable.
